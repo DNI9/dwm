@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+echo "^c#1e222a^ ^b#668ee3^  ^c#1e222a^^b#7aa2f7^ $(date '+%a %d, %I:%M %p') "

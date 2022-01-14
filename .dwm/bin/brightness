@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [[ $(brightnessctl info | grep "Max brightnes" | awk '{print $NF}') == 1 ]]; then
+	exit 0;
+fi
+
+backlight="$(brightnessctl info| grep "Current" | awk '{print $NF}'| sed 's/(\(.*\))/\1/g')"
+echo "^c#56B6C2^  ^c#56B6C2^ $backlight"

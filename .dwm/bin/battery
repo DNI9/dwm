@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+BAT=$(upower -i "$(upower -e | grep 'BAT')" | grep 'percentage' | cut -d':' -f2 | tr -d '%,[:blank:]')
+AC=$(upower -i "$(upower -e | grep 'BAT')" | grep 'state' | cut -d':' -f2 | tr -d '[:blank:]')
+
+if [[ "$AC" == "charging" ]]; then
+	echo "^c#E49263^  $BAT%"
+elif [[ "$AC" == "fully-charged" ]]; then
+	echo "^c#E06C75^  Full"
+else
+	if [[ ("$BAT" -ge "0") && ("$BAT" -le "20") ]]; then
+		echo "^c#E98CA4^   $BAT%"
+	elif [[ ("$BAT" -ge "20") && ("$BAT" -le "40") ]]; then
+		echo "^c#E98CA4^   $BAT%"
+	elif [[ ("$BAT" -ge "40") && ("$BAT" -le "60") ]]; then
+		echo "^c#E98CA4^   $BAT%"
+	elif [[ ("$BAT" -ge "60") && ("$BAT" -le "80") ]]; then
+		echo "^c#E98CA4^   $BAT%"
+	elif [[ ("$BAT" -ge "80") && ("$BAT" -le "100") ]]; then
+		echo "^c#E98CA4^   $BAT%"
+	fi
+fi

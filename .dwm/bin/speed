@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+echo "^c#7aa2f7^ $(netspeed down)"
