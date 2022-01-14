@@ -6,13 +6,9 @@ super + Print
 super + Delete
 	~/.dwm/bin/toggletouchpad.sh
 
-# Toggle pause state of MOCP (music on console)
-super + c
-	mocp -G
-
 # Logout Tool
 super + x
-	bash ~/.bin/logout-tool
+	bash ~/.config/rofi/bin/powermenu
 
 # Opens dmenu prompt
 super + d
@@ -30,18 +26,6 @@ super + w
 super + BackSpace
 	printf '' | xclip -selection clipboard
 
-# MOCP (Music player)
-super + m
-	st -e mocp
-
-# Gotop process viewer
-super + g
-	st -e gotop
-
-# btop++ process viewer
-super + B
-	st -e btop
-
 # Quickly record your screen with ffmpeg
 super + r
 	~/.dwm/bin/record-screen.sh
@@ -51,10 +35,6 @@ super + r
 super + v
     st -e pulsemixer
 
-# Set wallpaper with feh and sxiv
-super + shift + w
-	~/.dwm/bin/setwallpaper.sh
-
 # XKill - kills any x window
 super + shift + Escape
     xkill
@@ -62,21 +42,17 @@ super + shift + Escape
 super + shift + f
 	thunar
 
-# Discord Canary
-super + shift + d
-	discord-canary
-
 # Reload your sxhkd keybinds
 super + shift + s
 	pkill -USR1 -x sxhkd
 
 # Quickly edit your configs
-super + shift + c
-	~/.dwm/bin/configselector
+# super + shift + c
+# 	~/.dwm/bin/configselector
 
 # Get a quick manual of all the installed programs in your machine
-ctrl + m
-	bash ~/.dwm/bin/mansplain
+# ctrl + m
+# 	bash ~/.dwm/bin/mansplain
 
 # Screenshot a particular area of your screen
 Print
@@ -116,7 +92,3 @@ ctrl + alt + o
 # Lock your computer
 super + ctrl + l
 	betterlockscreen -l blur
-
-# Pixel color picker
-alt + c
-	~/.dwm/bin/pixelcolor

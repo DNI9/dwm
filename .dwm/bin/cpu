@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 cpu_load=$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}')
-printf "^c#232136^ ^b#7ec7a2^ CPU"
-printf "^c#abb2bf^ ^b#232136^ %s" "$cpu_load"
+printf "^c#2E3440^ ^b#7ec7a2^ CPU"
+printf "^c#abb2bf^ ^b#2E3440^ %s" "$cpu_load"
