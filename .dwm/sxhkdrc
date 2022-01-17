@@ -14,6 +14,9 @@ super + x
 super + d
 	bash ~/.config/rofi/bin/launcher
 
+super + shift + v
+        bash ~/.config/rofi/bin/clipboard
+
 # Alacritty (terminal)
 super + Return
     alacritty
@@ -39,7 +42,7 @@ super + v
 super + shift + Escape
     xkill
 
-super + shift + f
+super + f
 	thunar
 
 # Reload your sxhkd keybinds
@@ -90,5 +93,5 @@ ctrl + alt + o
     ~/.dwm/bin/picom-toggle.sh
 
 # Lock your computer
-super + ctrl + l
+ctrl + alt + l
 	betterlockscreen -l blur

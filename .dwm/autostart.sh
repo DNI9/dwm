@@ -4,7 +4,7 @@ wmname LG3D &
 #xmodmap -e "keycode 9 = Caps_Lock"; xmodmap -e "keycode 66 = Escape" &
 #xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape' &
 
-hsetroot -cover "$(find ~/Pictures/wallpapers/ -type f -name '*' | shuf -n 1)"
+hsetroot -cover "$(find ~/.dwm/wallpapers/ -type f -name '*' | shuf -n 1)"
 xsetroot -cursor_name left_ptr &
 nm-applet &
 numlockx on &
@@ -30,4 +30,7 @@ killall sxhkd
 sxhkd -c ~/.dwm/sxhkdrc &
 
 killall betterlockscreen
-betterlockscreen -u "$(find ~/Pictures/wallpapers/ -type f -name '*' | shuf -n 1)" &
+betterlockscreen -u "$(find ~/.dwm/wallpapers/ -type f -name '*' | shuf -n 1)" &
+
+exec keepassxc &
+greenclip daemon &
