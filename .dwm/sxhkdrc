@@ -1,6 +1,9 @@
 # Take a screenshot of your entire screen
 super + Print
-	maim | tee ~/Pictures/screenshots/"$(date | sed 's/\s/-/g')".png | xclip -selection clipboard -t image/png ; notify-send 'Screenshot has been saved and copied to your clipboard' -a 'Screenshot script' -u critical -t 2000
+	takeshot --area
+
+Print
+	takeshot --now
 
 # Disable the touchpad
 super + Delete
@@ -14,52 +17,37 @@ super + x
 super + d
 	bash ~/.config/rofi/bin/launcher
 
+# opens clipboard rofi menu
 super + shift + v
-        bash ~/.config/rofi/bin/clipboard
+	bash ~/.config/rofi/bin/clipboard
 
 # Alacritty (terminal)
 super + Return
-    alacritty
+  alacritty
 
 # Opens brave browser
 super + w
-    brave
+	brave
+
+# File Manager
+super + f
+	thunar
 
 # Quickly clear your clipboard
 super + BackSpace
 	printf '' | xclip -selection clipboard
 
-# Quickly record your screen with ffmpeg
-super + r
-	~/.dwm/bin/record-screen.sh
-# to record from the webcam set your input file to /dev/video<filenumber>
-
 # Pulsemixer - Terminal audio manager
 super + v
-    st -e pulsemixer
+  pavucontrol
 
 # XKill - kills any x window
 super + shift + Escape
-    xkill
-
-super + f
-	thunar
+  xkill
 
 # Reload your sxhkd keybinds
 super + shift + s
 	pkill -USR1 -x sxhkd
-
-# Quickly edit your configs
-# super + shift + c
-# 	~/.dwm/bin/configselector
-
-# Get a quick manual of all the installed programs in your machine
-# ctrl + m
-# 	bash ~/.dwm/bin/mansplain
-
-# Screenshot a particular area of your screen
-Print
-	maim -s | tee ~/Pictures/screenshots/"$(date | sed 's/\s/-/g')".png | xclip -selection clipboard -t image/png;notify-send 'Screenshot has been saved and copied to your clipboard' -a 'Screenshot script' -u critical -t 2000
 
 XF86AudioPlay
 	playerctl play-pause
@@ -77,16 +65,16 @@ XF86AudioRaiseVolume
 	volume --inc
 
 XF86AudioLowerVolume
-        volume --dec
+	volume --dec
 
 XF86AudioMute
 	volume --toggle
 
 XF86MonBrightnessUp
-    brightnessctl set 5%+
+	brightnessctl set 5%+
 
 XF86MonBrightnessDown
-    brightnessctl set 5%-
+	brightnessctl set 5%-
 
 # Toggle compositor (picom-jonaburg-git)
 ctrl + alt + o

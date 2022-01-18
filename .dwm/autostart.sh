@@ -8,10 +8,6 @@ hsetroot -cover "$(find ~/.dwm/wallpapers/ -type f -name '*' | shuf -n 1)"
 xsetroot -cursor_name left_ptr &
 nm-applet &
 numlockx on &
-# uncomment the 3 lines below to start bluetooth on boot
-#killall blueberry
-#killall blueberry-tray
-#blueberry-tray &
 
 killall xfce4-power-manager
 xfce4-power-manager &
