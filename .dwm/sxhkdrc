@@ -11,19 +11,19 @@ super + Delete
 
 # Logout Tool
 super + x
-	bash ~/.config/rofi/bin/powermenu
+	~/.config/rofi/bin/powermenu
 
 # Opens dmenu prompt
 super + d
-	bash ~/.config/rofi/bin/launcher
+	~/.config/rofi/bin/launcher
 
 # opens clipboard rofi menu
 super + shift + v
-	bash ~/.config/rofi/bin/clipboard
+	~/.config/rofi/bin/clipboard
 
 # Alacritty (terminal)
 super + Return
-  alacritty
+	alacritty
 
 # Opens brave browser
 super + w
@@ -78,7 +78,7 @@ XF86MonBrightnessDown
 
 # Toggle compositor (picom-jonaburg-git)
 ctrl + alt + o
-    ~/.dwm/bin/picom-toggle.sh
+	~/.dwm/bin/picom-toggle.sh
 
 # Lock your computer
 ctrl + alt + l
