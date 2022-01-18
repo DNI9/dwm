@@ -13,6 +13,9 @@ numlockx on &
 #killall blueberry-tray
 #blueberry-tray &
 
+killall xfce4-power-manager
+xfce4-power-manager &
+
 killall picom
 picom --experimental-backends --config ~/.dwm/picom.conf &
 
@@ -31,6 +34,11 @@ sxhkd -c ~/.dwm/sxhkdrc &
 
 killall betterlockscreen
 betterlockscreen -u "$(find ~/.dwm/wallpapers/ -type f -name '*' | shuf -n 1)" &
+
+/usr/lib/geoclue-2.0/demos/agent &
+
+killall redshift-gtk
+exec redshift-gtk &
 
 exec keepassxc &
 greenclip daemon &

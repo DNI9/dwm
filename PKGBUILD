@@ -1,5 +1,5 @@
 pkgname=dni9-dwm
-pkgver=1.r9.7f785bd
+pkgver=1.r9.eafe2d4
 pkgrel=1
 pkgdesc="My bloated build of DWM"
 url="https://github.com/DNI9/dwm"

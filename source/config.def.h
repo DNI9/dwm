@@ -74,7 +74,8 @@ static const Rule rules[] = {
     { "eww",      NULL,       NULL,       0,            0,           1,           -1 },
     { "firefoxdeveloperedition",        NULL,       NULL,       1 << 1,           0,           0,           -1 },
 	{ "Code",                           NULL,       NULL,       1 << 0,           0,           0,           -1 },
-	{ "TelegramDesktop",                NULL,       NULL,       1 << 5,           0,           0,           -1 },
+	{ "TelegramDesktop",                NULL,       NULL,       1 << 7,           0,           0,           -1 },
+	{ "kotatogram-desktop",             NULL,       NULL,       1 << 7,           0,           0,           -1 },
 	{ "mpv",                            NULL,       NULL,       1 << 6,           0,           0,           -1 },
 	{ "qbittorrent",                    NULL,       NULL,       1 << 4,           0,           0,           -1 },
 	{ "Brave-browser",                  NULL,       NULL,       1 << 1,           0,           0,           -1 },
@@ -92,10 +93,11 @@ static const Rule rules[] = {
 	{ "feh",  			                NULL,       NULL,       0,       	  1,           1,           -1 },
 	{ "Pavucontrol",  		            NULL,       NULL,       0,       	  1,           1,           -1 },
 	{ "Lxappearance",  		            NULL,       NULL,       0,       	  1,           1,           -1 },
-	{ "alacritty-float",  	            NULL,       NULL,       0,       	  1,           1,           -1 },
+	{ "alacritty-float",  	                NULL,       NULL,       0,       	  1,           1,           -1 },
 	{ "VirtualBox Manager",  	        NULL,       NULL,       0,       	  1,           1,           -1 },
 	{ "Nm-connection-editor",  	        NULL,       NULL,       0,       	  1,           1,           -1 },
 	{ "Xfce4-power-manager-settings",  	NULL,       NULL,       0,       	  1,           1,           -1 },
+	{ "qBittorrent",  	                NULL,       NULL,       1 << 10,       	  1,           0,           -1 },
 };
 
 /* layout(s) */
