@@ -1,0 +1,120 @@
+#!/usr/bin/env bash
+
+# Catppuccin colors
+black=#1A1826
+black2=#302D41
+green=#ABE9B3
+white=#D9E0EE
+blue=#89DCEB
+red=#F28FAD
+orange=#F8BD96
+darkblue=#76c7d6
+maroon=#E8A2AF
+
+function battery() {
+  BAT=$(upower -i "$(upower -e | grep 'BAT')" | grep 'percentage' | cut -d':' -f2 | tr -d '%,[:blank:]')
+  AC=$(upower -i "$(upower -e | grep 'BAT')" | grep 'state' | cut -d':' -f2 | tr -d '[:blank:]')
+
+  if [[ "$AC" == "charging" ]]; then
+    echo "^c$orange^  $BAT%"
+  elif [[ "$AC" == "fully-charged" ]]; then
+    echo "^c$red^  Full"
+  else
+    if [[ ("$BAT" -ge "0") && ("$BAT" -le "20") ]]; then
+      echo "^c$red^   $BAT%"
+    elif [[ ("$BAT" -ge "20") && ("$BAT" -le "40") ]]; then
+      echo "^c$red^   $BAT%"
+    elif [[ ("$BAT" -ge "40") && ("$BAT" -le "60") ]]; then
+      echo "^c$red^   $BAT%"
+    elif [[ ("$BAT" -ge "60") && ("$BAT" -le "80") ]]; then
+      echo "^c$red^   $BAT%"
+    elif [[ ("$BAT" -ge "80") && ("$BAT" -le "100") ]]; then
+      echo "^c$red^   $BAT%"
+    fi
+  fi
+}
+
+function brightness() {
+  if [[ $(brightnessctl info | grep "Max brightnes" | awk '{print $NF}') == 1 ]]; then
+    exit 0;
+  fi
+
+  backlight="$(brightnessctl info| grep "Current" | awk '{print $NF}'| sed 's/(\(.*\))/\1/g')"
+  echo "^c$darkblue^  ^c$darkblue^ $backlight"
+}
+
+function clock() {
+  echo "^c$black^ ^b$darkblue^  ^c$black^^b$blue^ $(date '+%a %d, %I:%M %p') "
+}
+
+function cpu() {
+  cpu_load=$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}')
+  printf "^c$black^ ^b$green^ CPU^c$white^ ^b$black2^ %s" "$cpu_load"
+}
+
+function memory() {
+  used=$(free | awk '/^Mem/ { print $3 }' | sed s/Gi//g)
+  total=$(free | awk '/^Mem/ { print $2 }' | sed s/Gi//g)
+  printf "^c$maroon^^b$black^   %s " "$((used*100/total))%"
+}
+
+function network() {
+  interface=$(ip route | awk '/^default/ { print $5 ; exit }')
+  [[ ! -d /sys/class/net/${interface} ]] && exit
+
+  NETSTATUS=$(cat /sys/class/net/"$interface"/operstate 2>/dev/null)
+  if [[ "$NETSTATUS" == "up" || "$NETSTATUS" == "unknown" ]]; then
+    if [[ $(~/.local/bin/check_connectivity 2>/dev/null) == 1 ]]; then
+      printf "^c$black^^b$blue^ 󰤨 ^d^%s" " ^c$blue^Connected "
+    else
+      printf "^c$black^^b$red^ 󰤩 ^d^%s" " ^c$red^No internet "
+    fi
+  else
+    printf "^c$black^^b$red^ 󰤭 ^d^%s" " ^c$red^Disconnected "
+  fi
+}
+
+function packages() {
+  updates=$(checkupdates | wc -l)
+  status=""
+  if [ "$updates" == 0 ]; then
+    status="^c$green^ Fully Updated"
+  else
+    status="^c$green^ $updates"" updates"
+  fi
+  echo "^c$green^  $status"
+}
+
+function song() {
+  song_max_char=35
+  [[ ! $(playerctl metadata 2>/dev/null) ]] && exit;
+
+  song_info="$(playerctl metadata artist) - $(playerctl metadata title)"
+  song_info_char=${#song_info}
+  if test $((song_info_char)) -gt $((song_max_char)); then
+    echo "^c$green^ "
+    printf "^c$white^ %s..." "${song_info:0:$((song_max_char))}"
+  else
+    echo "^c$green^ "
+    printf "^c$white^ %s" "$song_info"
+  fi
+}
+
+function net_speed() {
+  echo "^c$darkblue^ $(~/.local/bin/netspeed down)"
+}
+
+case "$1" in
+  battery)      battery ;;
+  brightness)   brightness ;;
+  clock)        clock ;;
+  cpu)          cpu ;;
+  memory)       memory ;;
+  network)      network ;;
+  packages)     packages ;;
+  song)         song ;;
+  net_speed)    net_speed ;;
+  *)
+    echo $"Usage: $0 {battery|brightness|clock|cpu|memory|network|packages|song|net_speed}"
+    exit 1
+esac

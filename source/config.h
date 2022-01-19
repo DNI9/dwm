@@ -1,5 +1,5 @@
 /* appearance */
-#include "themes/nord.h"
+#include "themes/catppuccin.h"
 
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int default_border = 0;  // to switch back to default border after dynamic border resizing via keybinds
@@ -15,7 +15,7 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails,display s
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 enum showtab_modes { showtab_never, showtab_auto, showtab_nmodes, showtab_always };
-static const int showtab            = False;
+static const int showtab            = showtab_auto;
 static const int toptab             = True;	/*tab is at the top of the screen in monoble mode*/
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 5;
@@ -74,7 +74,8 @@ static const Rule rules[] = {
     { "eww",      NULL,       NULL,       0,            0,           1,           -1 },
     { "firefoxdeveloperedition",        NULL,       NULL,       1 << 1,           0,           0,           -1 },
 	{ "Code",                           NULL,       NULL,       1 << 0,           0,           0,           -1 },
-	{ "TelegramDesktop",                NULL,       NULL,       1 << 5,           0,           0,           -1 },
+	{ "TelegramDesktop",                NULL,       NULL,       1 << 7,           0,           0,           -1 },
+	{ "kotatogram-desktop",             NULL,       NULL,       1 << 7,           0,           0,           -1 },
 	{ "mpv",                            NULL,       NULL,       1 << 6,           0,           0,           -1 },
 	{ "qbittorrent",                    NULL,       NULL,       1 << 4,           0,           0,           -1 },
 	{ "Brave-browser",                  NULL,       NULL,       1 << 1,           0,           0,           -1 },
@@ -92,10 +93,12 @@ static const Rule rules[] = {
 	{ "feh",  			                NULL,       NULL,       0,       	  1,           1,           -1 },
 	{ "Pavucontrol",  		            NULL,       NULL,       0,       	  1,           1,           -1 },
 	{ "Lxappearance",  		            NULL,       NULL,       0,       	  1,           1,           -1 },
-	{ "alacritty-float",  	            NULL,       NULL,       0,       	  1,           1,           -1 },
+	{ "alacritty-float",  	                NULL,       NULL,       0,       	  1,           1,           -1 },
 	{ "VirtualBox Manager",  	        NULL,       NULL,       0,       	  1,           1,           -1 },
 	{ "Nm-connection-editor",  	        NULL,       NULL,       0,       	  1,           1,           -1 },
 	{ "Xfce4-power-manager-settings",  	NULL,       NULL,       0,       	  1,           1,           -1 },
+	{ "qBittorrent",  	                NULL,       NULL,       1 << 10,       	  1,           0,           -1 },
+        { "eww",                                NULL,       NULL,       0,                0,           1,           -1 },
 };
 
 /* layout(s) */
@@ -137,8 +140,8 @@ static Key keys[] = {
     { MODKEY|ControlMask,                       XK_w,      tabmode,        { -1 } },
     { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
     { MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-    { MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-    { MODKEY,                       XK_o,      incnmaster,     {.i = -1 } },
+    { MODKEY, 					    XK_i,      incnmaster,     {.i = -1 } }, // Horizontal
+    { MODKEY, 					    XK_r,      incnmaster,     {.i = +1 } }, // Vertical
     { MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
     { MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
     { MODKEY|ShiftMask,             XK_h,      setcfact,       {.f = +0.25} },

@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-used=$(free | awk '/^Mem/ { print $3 }' | sed s/Gi//g)
-total=$(free | awk '/^Mem/ { print $2 }' | sed s/Gi//g)
-printf "^c#C678DD^^b#2E3440^    %s " "$((used*100/total))%"

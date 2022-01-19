@@ -1,5 +1,5 @@
 /* appearance */
-#include "themes/nord.h"
+#include "themes/catppuccin.h"
 
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int default_border = 0;  // to switch back to default border after dynamic border resizing via keybinds
@@ -15,7 +15,7 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails,display s
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 enum showtab_modes { showtab_never, showtab_auto, showtab_nmodes, showtab_always };
-static const int showtab            = False;
+static const int showtab            = showtab_always;
 static const int toptab             = True;	/*tab is at the top of the screen in monoble mode*/
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 5;
@@ -35,10 +35,10 @@ static const int colorfultag        = 1;  /* 0 means use SchemeSel for selected 
 static char *tags[] = {"󰘦", "󰇧", "󰞷", "󰉋", "󰎆", "󰅺", "󰐌", "󰒓", "󰅢 "};
 
 static const char *colors[][3]      = {
-    /*               fg         bg         border   */
+    /*                     fg     bg     border   */
     [SchemeNorm]       = { gray3, black, gray2 },
     [SchemeSel]        = { gray4, blue,  blue  },
-    [TabSel]           = { blue, gray2,  black  },
+    [TabSel]           = { blue, gray2,  black },
     [TabNorm]          = { gray3, black, black },
     [SchemeTag]        = { gray3, black, black },
     [SchemeTag1]       = { blue,  black, black },
@@ -98,6 +98,7 @@ static const Rule rules[] = {
 	{ "Nm-connection-editor",  	        NULL,       NULL,       0,       	  1,           1,           -1 },
 	{ "Xfce4-power-manager-settings",  	NULL,       NULL,       0,       	  1,           1,           -1 },
 	{ "qBittorrent",  	                NULL,       NULL,       1 << 10,       	  1,           0,           -1 },
+        { "eww",                                NULL,       NULL,       0,                0,           1,           -1 },
 };
 
 /* layout(s) */
@@ -140,7 +141,7 @@ static Key keys[] = {
     { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
     { MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
     { MODKEY, 					    XK_i,      incnmaster,     {.i = -1 } }, // Horizontal
-    { MODKEY, 					    XK_u,      incnmaster,     {.i = +1 } }, // Vertical
+    { MODKEY, 					    XK_r,      incnmaster,     {.i = +1 } }, // Vertical
     { MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
     { MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
     { MODKEY|ShiftMask,             XK_h,      setcfact,       {.f = +0.25} },
