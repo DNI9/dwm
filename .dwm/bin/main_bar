@@ -11,7 +11,7 @@ orange=#F8BD96
 darkblue=#76c7d6
 maroon=#E8A2AF
 
-function battery() {
+battery() {
   BAT=$(upower -i "$(upower -e | grep 'BAT')" | grep 'percentage' | cut -d':' -f2 | tr -d '%,[:blank:]')
   AC=$(upower -i "$(upower -e | grep 'BAT')" | grep 'state' | cut -d':' -f2 | tr -d '[:blank:]')
 
@@ -34,7 +34,7 @@ function battery() {
   fi
 }
 
-function brightness() {
+brightness() {
   if [[ $(brightnessctl info | grep "Max brightnes" | awk '{print $NF}') == 1 ]]; then
     exit 0;
   fi
@@ -43,22 +43,22 @@ function brightness() {
   echo "^c$darkblue^  ^c$darkblue^ $backlight"
 }
 
-function clock() {
+clock() {
   echo "^c$black^ ^b$darkblue^  ^c$black^^b$blue^ $(date '+%a %d, %I:%M %p') "
 }
 
-function cpu() {
+cpu() {
   cpu_load=$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}')
   printf "^c$black^ ^b$green^ CPU^c$white^ ^b$black2^ %s" "$cpu_load"
 }
 
-function memory() {
+memory() {
   used=$(free | awk '/^Mem/ { print $3 }' | sed s/Gi//g)
   total=$(free | awk '/^Mem/ { print $2 }' | sed s/Gi//g)
   printf "^c$maroon^^b$black^   %s " "$((used*100/total))%"
 }
 
-function network() {
+network() {
   interface=$(ip route | awk '/^default/ { print $5 ; exit }')
   [[ ! -d /sys/class/net/${interface} ]] && exit
 
@@ -74,7 +74,7 @@ function network() {
   fi
 }
 
-function packages() {
+packages() {
   updates=$(checkupdates | wc -l)
   status=""
   if [ "$updates" == 0 ]; then
@@ -85,22 +85,20 @@ function packages() {
   echo "^c$green^  $status"
 }
 
-function song() {
+song() {
   song_max_char=35
   [[ ! $(playerctl metadata 2>/dev/null) ]] && exit;
 
   song_info="$(playerctl metadata artist) - $(playerctl metadata title)"
   song_info_char=${#song_info}
   if test $((song_info_char)) -gt $((song_max_char)); then
-    echo "^c$green^ "
-    printf "^c$white^ %s..." "${song_info:0:$((song_max_char))}"
+    printf "^c$green^  ^c$white^ %s..." "${song_info:0:$((song_max_char))}"
   else
-    echo "^c$green^ "
-    printf "^c$white^ %s" "$song_info"
+    printf "^c$green^  ^c$white^ %s" "$song_info"
   fi
 }
 
-function net_speed() {
+net_speed() {
   echo "^c$darkblue^ $(~/.local/bin/netspeed down)"
 }
 
