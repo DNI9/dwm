@@ -44,7 +44,7 @@ brightness() {
 }
 
 clock() {
-  echo "^c$black^ ^b$darkblue^  ^c$black^^b$blue^ $(date '+%a %d, %I:%M %p') "
+  echo "^c$black^ ^b$darkblue^  ^c$black^^b$blue^ $(date '+%a %d, %I:%M %p') "
 }
 
 cpu() {
@@ -55,7 +55,7 @@ cpu() {
 memory() {
   used=$(free | awk '/^Mem/ { print $3 }' | sed s/Gi//g)
   total=$(free | awk '/^Mem/ { print $2 }' | sed s/Gi//g)
-  printf "^c$maroon^^b$black^   %s " "$((used*100/total))%"
+  printf "^c$maroon^^b$black^  %s " "$((used*100/total))%"
 }
 
 network() {

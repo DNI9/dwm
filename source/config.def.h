@@ -32,7 +32,7 @@ static const int colorfultag        = 1;  /* 0 means use SchemeSel for selected 
 
 /* tagging */
 // static char *tags[] = {" ", " ", " ", " ", " ", " ", " ", " ", " "};
-static char *tags[] = {"󰘦", "󰇧", "󰞷", "󰉋", "󰎆", "󰅺", "󰐌", "󰒓", "󰅢 "};
+static char *tags[] = {"󰘦", "󰇧", "󰞷", "󰉋", "󰎆", "󰅺", "󰐌", "󰒓", "󰅢"};
 
 static const char *colors[][3]      = {
     /*                     fg     bg     border   */

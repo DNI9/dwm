@@ -32,7 +32,7 @@ static const int colorfultag        = 1;  /* 0 means use SchemeSel for selected 
 
 /* tagging */
 // static char *tags[] = {" ", " ", " ", " ", " ", " ", " ", " ", " "};
-static char *tags[] = {"󰘦", "󰇧", "󰞷", "󰉋", "󰎆", "󰅺", "󰐌", "󰒓", "󰅢 "};
+static char *tags[] = {"󰘦", "󰇧", "󰞷", "󰉋", "󰎆", "󰅺", "󰐌", "󰒓", "󰅢"};
 
 static const char *colors[][3]      = {
     /*                     fg     bg     border   */
@@ -98,7 +98,7 @@ static const Rule rules[] = {
 	{ "Nm-connection-editor",  	        NULL,       NULL,       0,       	  1,           1,           -1 },
 	{ "Xfce4-power-manager-settings",  	NULL,       NULL,       0,       	  1,           1,           -1 },
 	{ "qBittorrent",  	                NULL,       NULL,       1 << 10,       	  1,           0,           -1 },
-        { "eww",                                NULL,       NULL,       0,                0,           1,           -1 },
+    { "eww",                                NULL,       NULL,       0,                0,           1,           -1 },
 };
 
 /* layout(s) */
