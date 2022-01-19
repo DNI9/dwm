@@ -15,7 +15,7 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails,display s
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 enum showtab_modes { showtab_never, showtab_auto, showtab_nmodes, showtab_always };
-static const int showtab            = showtab_always;
+static const int showtab            = showtab_auto;
 static const int toptab             = True;	/*tab is at the top of the screen in monoble mode*/
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 5;
@@ -98,7 +98,7 @@ static const Rule rules[] = {
 	{ "Nm-connection-editor",  	        NULL,       NULL,       0,       	  1,           1,           -1 },
 	{ "Xfce4-power-manager-settings",  	NULL,       NULL,       0,       	  1,           1,           -1 },
 	{ "qBittorrent",  	                NULL,       NULL,       1 << 10,       	  1,           0,           -1 },
-        { "eww",                                NULL,       NULL,       0,                0,           1,           -1 },
+    { "eww",                                NULL,       NULL,       0,                0,           1,           -1 },
 };
 
 /* layout(s) */
@@ -137,11 +137,11 @@ static const char *dmenucmd[] = { "dmenu_run", NULL };
 static Key keys[] = {
     /* modifier                     key        function        argument */
     { MODKEY,                       XK_b,      togglebar,      {0} },
-    { MODKEY|ControlMask,                       XK_w,      tabmode,        { -1 } },
+    { MODKEY|ControlMask,           XK_w,      tabmode,        { -1 } },
     { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
     { MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-    { MODKEY, 					    XK_i,      incnmaster,     {.i = -1 } }, // Horizontal
-    { MODKEY, 					    XK_r,      incnmaster,     {.i = +1 } }, // Vertical
+    { MODKEY, 					    XK_m,      incnmaster,     {.i = -1 } }, // Horizontal
+    { MODKEY, 		                XK_n,      incnmaster,     {.i = +1 } }, // Vertical
     { MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
     { MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
     { MODKEY|ShiftMask,             XK_h,      setcfact,       {.f = +0.25} },

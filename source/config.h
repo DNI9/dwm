@@ -35,10 +35,10 @@ static const int colorfultag        = 1;  /* 0 means use SchemeSel for selected 
 static char *tags[] = {"󰘦", "󰇧", "󰞷", "󰉋", "󰎆", "󰅺", "󰐌", "󰒓", "󰅢 "};
 
 static const char *colors[][3]      = {
-    /*               fg         bg         border   */
+    /*                     fg     bg     border   */
     [SchemeNorm]       = { gray3, black, gray2 },
     [SchemeSel]        = { gray4, blue,  blue  },
-    [TabSel]           = { blue, gray2,  black  },
+    [TabSel]           = { blue, gray2,  black },
     [TabNorm]          = { gray3, black, black },
     [SchemeTag]        = { gray3, black, black },
     [SchemeTag1]       = { blue,  black, black },
@@ -137,11 +137,11 @@ static const char *dmenucmd[] = { "dmenu_run", NULL };
 static Key keys[] = {
     /* modifier                     key        function        argument */
     { MODKEY,                       XK_b,      togglebar,      {0} },
-    { MODKEY|ControlMask,                       XK_w,      tabmode,        { -1 } },
+    { MODKEY|ControlMask,           XK_w,      tabmode,        { -1 } },
     { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
     { MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-    { MODKEY, 					    XK_i,      incnmaster,     {.i = -1 } }, // Horizontal
-    { MODKEY, 					    XK_r,      incnmaster,     {.i = +1 } }, // Vertical
+    { MODKEY, 					    XK_m,      incnmaster,     {.i = -1 } }, // Horizontal
+    { MODKEY, 		                XK_n,      incnmaster,     {.i = +1 } }, // Vertical
     { MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
     { MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
     { MODKEY|ShiftMask,             XK_h,      setcfact,       {.f = +0.25} },
