@@ -102,6 +102,14 @@ net_speed() {
   echo "^c$darkblue^ $(~/.local/bin/netspeed down)"
 }
 
+BT_battery() {
+  bat_lvl="$(bluetoothctl info | tail -n1 | awk -F ' ' '{print $4}' | tr -d '()')"
+
+  if bluetoothctl info | grep Connected > /dev/null; then
+    echo "^c$orange^  $bat_lvl%"
+  fi
+}
+
 case "$1" in
   battery)      battery ;;
   brightness)   brightness ;;
@@ -112,7 +120,8 @@ case "$1" in
   packages)     packages ;;
   song)         song ;;
   net_speed)    net_speed ;;
+  BT_battery)   BT_battery ;;
   *)
-    echo $"Usage: $0 {battery|brightness|clock|cpu|memory|network|packages|song|net_speed}"
+    echo $"Usage: $0 {battery|brightness|clock|cpu|memory|network|packages|song|net_speed|BT_battery}"
     exit 1
 esac
