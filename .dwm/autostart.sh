@@ -15,9 +15,9 @@ export AWT_TOOLKIT=MToolkit
 #xmodmap -e "keycode 9 = Caps_Lock"; xmodmap -e "keycode 66 = Escape" &
 #xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape' &
 _wallpaper=$(find ~/.dwm/wallpapers/ -type f -name '*' | shuf -n 1)
-hsetroot -cover $_wallpaper
+hsetroot -cover "$_wallpaper"
 xsetroot -cursor_name left_ptr &
-nm-applet &
+# nm-applet &
 numlockx on &
 
 xfce4-power-manager &
@@ -33,7 +33,7 @@ dwmblocks &
 
 sxhkd -c ~/.dwm/sxhkdrc &
 
-betterlockscreen -u $_wallpaper &
+betterlockscreen -u "$_wallpaper" &
 
 /usr/lib/geoclue-2.0/demos/agent &
 

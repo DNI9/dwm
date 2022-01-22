@@ -92,6 +92,7 @@ static const Rule rules[] = {
 	{ "Yad",  			                NULL,       NULL,       0,       	  1,           1,           -1 },
 	{ "feh",  			                NULL,       NULL,       0,       	  1,           1,           -1 },
 	{ "Pavucontrol",  		            NULL,       NULL,       0,       	  1,           1,           -1 },
+    { "Blueman-manager",  	            NULL,       NULL,       0,       	  1,           1,           -1 },
 	{ "Lxappearance",  		            NULL,       NULL,       0,       	  1,           1,           -1 },
 	{ "alacritty-float",  	                NULL,       NULL,       0,       	  1,           1,           -1 },
 	{ "VirtualBox Manager",  	        NULL,       NULL,       0,       	  1,           1,           -1 },
