@@ -15,7 +15,12 @@ super + x
 
 # Opens dmenu prompt
 super + d
-	~/.config/rofi/bin/launcher
+        dmenu_run
+	# ~/.config/rofi/bin/launcher
+
+# Opens projects in VSCode
+super + shift + d
+        dmenu_projects
 
 # opens clipboard rofi menu
 super + shift + v

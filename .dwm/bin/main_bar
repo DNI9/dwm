@@ -59,8 +59,8 @@ memory() {
 }
 
 network() {
-  interface=$(ip route | awk '/^default/ { print $5 ; exit }')
-  [[ ! -d /sys/class/net/${interface} ]] && exit
+  interface=$(ip route | awk '/^default/ { print $5}')
+  [[ ! -d /sys/class/net/${interface} ]] && exit 0
 
   NETSTATUS=$(cat /sys/class/net/"$interface"/operstate 2>/dev/null)
   if [[ "$NETSTATUS" == "up" || "$NETSTATUS" == "unknown" ]]; then
@@ -87,7 +87,7 @@ packages() {
 
 song() {
   song_max_char=35
-  [[ ! $(playerctl metadata 2>/dev/null) ]] && exit;
+  [[ ! $(playerctl metadata 2>/dev/null) ]] && exit 0;
 
   song_info="$(playerctl metadata artist) - $(playerctl metadata title)"
   song_info_char=${#song_info}
