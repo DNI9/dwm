@@ -1,50 +1,31 @@
-# Take a screenshot of your entire screen
+##---------- Applications ----------##
+
+super + {Return,w,f}
+	{alacritty,brave,thunar}
+
+##---------- Launchers & Menus ----------##
+
+super + {x,d}
+	{~/.config/rofi/bin/powermenu,dmenu_run}
+
+# Opens projects in VSCode
+super + shift + {d,y,v}
+        {dmenu_projects,dmenu_yt,~/.config/rofi/bin/clipboard}
+
+##---------- System ----------##
+
 super + Print
 	takeshot --area
 
 Print
 	takeshot --now
 
-# Disable the touchpad
-super + Delete
-	~/.dwm/bin/toggletouchpad.sh
-
-# Logout Tool
-super + x
-	~/.config/rofi/bin/powermenu
-
-# Opens dmenu prompt
-super + d
-        dmenu_run
-	# ~/.config/rofi/bin/launcher
-
-# Opens projects in VSCode
-super + shift + d
-        dmenu_projects
-
-# opens clipboard rofi menu
-super + shift + v
-	~/.config/rofi/bin/clipboard
-
-# Alacritty (terminal)
-super + Return
-	alacritty
-
-# Opens brave browser
-super + w
-	brave
-
-# File Manager
-super + f
-	thunar
+super + {Delete,v}
+	{~/.dwm/bin/toggletouchpad.sh,pavucontrol}
 
 # Quickly clear your clipboard
 super + BackSpace
 	printf '' | xclip -selection clipboard
-
-# Pulsemixer - Terminal audio manager
-super + v
-  pavucontrol
 
 # XKill - kills any x window
 super + shift + Escape
@@ -54,37 +35,14 @@ super + shift + Escape
 super + shift + s
 	pkill -USR1 -x sxhkd
 
-XF86AudioPlay
-	playerctl play-pause
+XF86Audio{Play,Next,Prev,Stop}
+	playerctl {play-pause,next,previous,stop}
 
-XF86AudioNext
-	playerctl next
+XF86Audio{RaiseVolume,LowerVolume,Mute}
+	volume --{inc,dec,toggle}
 
-XF86AudioPrev
-	playerctl previous
+XF86MonBrightness{Up,Down}
+	brightnessctl set {5%+,5%-}
 
-XF86AudioStop
-	playerctl stop
-
-XF86AudioRaiseVolume
-	volume --inc
-
-XF86AudioLowerVolume
-	volume --dec
-
-XF86AudioMute
-	volume --toggle
-
-XF86MonBrightnessUp
-	brightnessctl set 5%+
-
-XF86MonBrightnessDown
-	brightnessctl set 5%-
-
-# Toggle compositor (picom-jonaburg-git)
-ctrl + alt + o
-	~/.dwm/bin/picom-toggle.sh
-
-# Lock your computer
-ctrl + alt + l
-	betterlockscreen -l blur
+ctrl + alt + {o,l}
+	{~/.dwm/bin/picom-toggle.sh,betterlockscreen -l blur}
