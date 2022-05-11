@@ -6,7 +6,7 @@ super + {Return,w,f}
 ##---------- Launchers & Menus ----------##
 
 super + {x,d}
-	{~/.config/rofi/bin/powermenu,dmenu_run}
+	{~/.config/rofi/bin/powermenu,j4-dmenu-desktop --dmenu="dmenu -i" --term="alacritty"}
 
 # Opens projects in VSCode
 super + shift + {d,y,v}
